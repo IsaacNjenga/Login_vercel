@@ -17,11 +17,7 @@ mongoose.connect(
  "mongodb+srv://IsaacNjenga:cations!@cluster0.xf14h71.mongodb.net/employee?retryWrites=true&w=majority&appName=Cluster0"
 );
 
-app.get("/", (req,res) => {
-  res.json("Hello");
-})
-
-app.post("/register", (req, res) => {
+app.post("/", (req, res) => {
   EmployeeModel.create(req.body)
     .then((employee) => res.json(employee))
     .catch((err) => res.json(err));
