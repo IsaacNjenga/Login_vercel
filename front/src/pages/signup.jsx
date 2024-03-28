@@ -9,15 +9,16 @@ function SignUp() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  
+axios.default.withCredentials = true;
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(`http://localhost:3001/register`, { name, email, password })
+    e.preventDefault();    
+      axios.post(`https://login-vercel-api.vercel.app/register`, { name, email, password })
       .then((result) => {
         console.log(result);
         navigate("/login");
-      })
+        })
       .catch((err) => console.log(err));
   };
 
