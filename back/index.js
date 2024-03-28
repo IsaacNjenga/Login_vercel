@@ -5,10 +5,16 @@ const EmployeeModel = require("./models/employee");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin:[""],
+    methods:["POST","GET"],
+    credentials: true
+  }
+));
 
 mongoose.connect(
-  "mongodb+srv://IsaacNjenga:cations!@cluster0.xf14h71.mongodb.net/employee"
+ "mongodb+srv://IsaacNjenga:cations!@cluster0.xf14h71.mongodb.net/employee?retryWrites=true&w=majority&appName=Cluster0"
 );
 
 app.post("/register", (req, res) => {
