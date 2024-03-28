@@ -8,10 +8,11 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:3001/login`, { email, password })
+      .post(`https://login-vercel-api.vercel.app/login`, { email, password })
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {
